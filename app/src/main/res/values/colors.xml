@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2025 by David Gerber - https://zapek.com
+  ~
+  ~ This file is part of Xeres-Android.
+  ~
+  ~ Xeres-Android is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Xeres-Android is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Xeres-Android.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="color_00">#CC0000</color>
+    <color name="color_01">#006CAD</color>
+    <color name="color_02">#4D9900</color>
+    <color name="color_03">#6600CC</color>
+    <color name="color_04">#A67D00</color>
+    <color name="color_05">#009927</color>
+    <color name="color_06">#0030C0</color>
+    <color name="color_07">#CC009A</color>
+    <color name="color_08">#B94600</color>
+    <color name="color_09">#869900</color>
+    <color name="color_10">#149900</color>
+    <color name="color_11">#009960</color>
+    <color name="color_12">#006CAD</color>
+    <color name="color_13">#0099CC</color>
+    <color name="color_14">#B300CC</color>
+    <color name="color_15">#CC004D</color>
+</resources>

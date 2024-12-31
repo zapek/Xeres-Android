@@ -1,0 +1,74 @@
+/*
+ * Copyright (c) 2025 by David Gerber - https://zapek.com
+ *
+ * This file is part of Xeres-Android.
+ *
+ * Xeres-Android is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Xeres-Android is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Xeres-Android.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'io.xeres.mobile'
+    compileSdk 34
+    buildFeatures {
+        buildConfig true
+    }
+
+    defaultConfig {
+        applicationId "io.xeres.mobile"
+        minSdk 30
+        targetSdk 34
+        versionCode 1
+        versionName "0.7.3"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.constraintlayout
+    implementation libs.lifecycle.livedata.ktx
+    implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.navigation.fragment
+    implementation libs.navigation.ui
+    implementation libs.retrofit
+    implementation libs.converter.gson
+    implementation libs.stompprotocolandroid
+    implementation libs.activity
+    implementation libs.preference
+    implementation libs.jsoup
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}

@@ -1,0 +1,60 @@
+<!--
+  ~ Copyright (c) 2025 by David Gerber - https://zapek.com
+  ~
+  ~ This file is part of Xeres-Android.
+  ~
+  ~ Xeres-Android is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Xeres-Android is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Xeres-Android.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+  <group android:scaleX="0.48"
+      android:scaleY="0.48"
+      android:translateX="133.12"
+      android:translateY="133.12">
+    <path
+        android:pathData="m100,92.63a131.73,163.37 0,0 1,114.08 81.69,131.73 163.37,0 0,1 0,163.37A131.73,163.37 0,0 1,100 419.37"
+        android:strokeWidth="62.153"
+        android:fillColor="#00000000"
+        android:strokeColor="#000000"/>
+    <path
+        android:pathData="M411.81,92.63A163.37,131.73 90,0 0,280.08 256,163.37 131.73,90 0,0 411.81,419.37"
+        android:strokeWidth="62.1529"
+        android:fillColor="#00000000"
+        android:strokeColor="#000000"/>
+    <path
+        android:pathData="M75.79,75.53m-63.36,0a63.36,63.36 0,1 1,126.71 0a63.36,63.36 0,1 1,-126.71 0"
+        android:strokeWidth="2"
+        android:fillColor="#ff6600"
+        android:strokeColor="#000000"/>
+    <path
+        android:pathData="M75.79,436.47m-63.36,0a63.36,63.36 0,1 1,126.71 0a63.36,63.36 0,1 1,-126.71 0"
+        android:strokeWidth="2"
+        android:fillColor="#ff6600"
+        android:strokeColor="#000000"/>
+    <path
+        android:pathData="M436.21,75.53m-63.36,0a63.36,63.36 0,1 1,126.71 0a63.36,63.36 0,1 1,-126.71 0"
+        android:strokeWidth="2"
+        android:fillColor="#ff6600"
+        android:strokeColor="#000000"/>
+    <path
+        android:pathData="M436.21,436.47m-63.36,0a63.36,63.36 0,1 1,126.71 0a63.36,63.36 0,1 1,-126.71 0"
+        android:strokeWidth="2"
+        android:fillColor="#ff6600"
+        android:strokeColor="#000000"/>
+  </group>
+</vector>

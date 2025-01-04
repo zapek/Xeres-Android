@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Version"/>
+                    android:text="@string/version"/>
             <TextView
                     android:id="@+id/version"
                     android:layout_width="wrap_content"
@@ -78,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Web"/>
+                    android:text="@string/web"/>
             <TextView
                     android:id="@+id/web"
                     android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Source code"/>
+                    android:text="@string/source_code"/>
             <TextView
                     android:id="@+id/support"
                     android:layout_width="wrap_content"

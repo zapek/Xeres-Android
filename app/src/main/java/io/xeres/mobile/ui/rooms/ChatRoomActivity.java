@@ -58,6 +58,7 @@ import io.xeres.mobile.service.LocalBinder;
 import io.xeres.mobile.service.json.ChatRoomMessage;
 import io.xeres.mobile.util.BitmapUtils;
 import io.xeres.mobile.util.JsonUtils;
+import io.xeres.mobile.util.UiUtils;
 import rx.Subscription;
 import ua.naiksoftware.stomp.client.StompMessage;
 
@@ -288,7 +289,7 @@ public class ChatRoomActivity extends AppCompatActivity
 								{
 									runOnUiThread(() -> {
 										chatRoomAdapter.addIncomingChatMessage(chatMessage);
-										recyclerView.scrollToPosition(chatRoomAdapter.getItemCount() - 1);
+										UiUtils.scrollToBottomIfPossible(recyclerView, chatRoomAdapter);
 									});
 								}
 							}

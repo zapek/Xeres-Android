@@ -60,6 +60,7 @@ import io.xeres.mobile.service.json.ChatMessage;
 import io.xeres.mobile.util.BitmapUtils;
 import io.xeres.mobile.util.Id;
 import io.xeres.mobile.util.JsonUtils;
+import io.xeres.mobile.util.UiUtils;
 import rx.Subscription;
 import ua.naiksoftware.stomp.client.StompMessage;
 
@@ -287,7 +288,7 @@ public class ChatActivity extends AppCompatActivity
 								{
 									runOnUiThread(() -> {
 										chatAdapter.addIncomingChatMessage(chatMessage);
-										recyclerView.scrollToPosition(chatAdapter.getItemCount() - 1);
+										UiUtils.scrollToBottomIfPossible(recyclerView, chatAdapter);
 									});
 								}
 							}

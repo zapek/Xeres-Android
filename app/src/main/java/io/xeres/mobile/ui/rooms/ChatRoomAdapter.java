@@ -20,19 +20,13 @@
 package io.xeres.mobile.ui.rooms;
 
 import android.annotation.SuppressLint;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.jsoup.Jsoup;
 
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -42,7 +36,7 @@ import java.util.Locale;
 import io.xeres.mobile.R;
 import io.xeres.mobile.service.json.ChatRoomBacklog;
 import io.xeres.mobile.service.json.ChatRoomMessage;
-import io.xeres.mobile.util.ColorGenerator;
+import io.xeres.mobile.util.ChatUtils;
 import io.xeres.mobile.view.AsyncImageView;
 
 class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHolder>
@@ -79,6 +73,7 @@ class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHolder>
 	public void onBindViewHolder(@NonNull ChatRoomAdapter.ViewHolder holder, int position)
 	{
 		var line = backlogs.get(position);
+		holder.getAsyncImageView().setImageInput(imageInput);
 		processChatLine(holder, line);
 		holder.getTimeView().setText(TIME_DISPLAY.format(line.getCreated()));
 	}
@@ -98,40 +93,8 @@ class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHolder>
 	private void processChatLine(ChatRoomAdapter.ViewHolder holder, ChatRoomBacklog line)
 	{
 		var nickname = line.getGxsId() == null ? ownName : line.getNickname();
-		var formattedNickname = "<" + nickname + ">";
-		String message;
-
-		var img = Jsoup.parse(line.getMessage()).selectFirst("img");
-		if (img != null)
-		{
-			var data = img.absUrl("src");
-			if (!TextUtils.isEmpty(data) && data.startsWith("data:"))
-			{
-				holder.getAsyncImageView().setImageInput(imageInput);
-				holder.getAsyncImageView().setImageUrl(data);
-			}
-			holder.getAsyncImageView().setVisibility(View.VISIBLE);
-			holder.getTextView().setVisibility(View.GONE);
-		}
-		else
-		{
-			message = line.getMessage();
-			holder.getAsyncImageView().setVisibility(View.GONE);
-			holder.getAsyncImageView().setImageUrl(null);
-			if (line.getGxsId() == null)
-			{
-				holder.getTextView().setText(formattedNickname + " " + message);
-			}
-			else
-			{
-				var spannableString = new SpannableString(formattedNickname + " " + message);
-				var color = ContextCompat.getColor(holder.getTextView().getContext(), ColorGenerator.generateColor(line.getGxsId().toString()));
-
-				spannableString.setSpan(new ForegroundColorSpan(color), 0, formattedNickname.length(), SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
-				holder.getTextView().setText(spannableString);
-			}
-			holder.getTextView().setVisibility(View.VISIBLE);
-		}
+		var isOwn = line.getGxsId() == null;
+		ChatUtils.processChatLine(holder.getTextView().getContext(), isOwn ? nickname : line.getGxsId().toString(), nickname, line.getMessage(), isOwn, holder.getTextView(), holder.getAsyncImageView());
 	}
 
 	public static class ViewHolder extends RecyclerView.ViewHolder

@@ -20,19 +20,13 @@
 package io.xeres.mobile.ui.chat;
 
 import android.annotation.SuppressLint;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.jsoup.Jsoup;
 
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -42,7 +36,7 @@ import java.util.Locale;
 import io.xeres.mobile.R;
 import io.xeres.mobile.service.json.ChatBacklog;
 import io.xeres.mobile.service.json.ChatMessage;
-import io.xeres.mobile.util.ColorGenerator;
+import io.xeres.mobile.util.ChatUtils;
 import io.xeres.mobile.view.AsyncImageView;
 
 class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>
@@ -79,6 +73,7 @@ class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position)
 	{
 		var line = backlogs.get(position);
+		holder.getAsyncImageView().setImageInput(imageInput);
 		processChatLine(holder, line);
 		holder.getTimeView().setText(TIME_DISPLAY.format(line.getCreated()));
 	}
@@ -98,40 +93,7 @@ class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>
 	private void processChatLine(ViewHolder holder, ChatBacklog line)
 	{
 		var nickname = line.isOwn() ? ownName : targetName;
-		var formattedNickname = "<" + nickname + ">";
-		String message;
-
-		var img = Jsoup.parse(line.getMessage()).selectFirst("img");
-		if (img != null)
-		{
-			var data = img.absUrl("src");
-			if (!TextUtils.isEmpty(data) && data.startsWith("data:"))
-			{
-				holder.getAsyncImageView().setImageInput(imageInput);
-				holder.getAsyncImageView().setImageUrl(data);
-			}
-			holder.getAsyncImageView().setVisibility(View.VISIBLE);
-			holder.getTextView().setVisibility(View.GONE);
-		}
-		else
-		{
-			message = line.getMessage();
-			holder.getAsyncImageView().setVisibility(View.GONE);
-			holder.getAsyncImageView().setImageUrl(null);
-			if (line.isOwn())
-			{
-				holder.getTextView().setText(formattedNickname + " " + message);
-			}
-			else
-			{
-				var spannableString = new SpannableString(formattedNickname + " " + message);
-				var color = ContextCompat.getColor(holder.getTextView().getContext(), ColorGenerator.generateColor(nickname));
-
-				spannableString.setSpan(new ForegroundColorSpan(color), 0, formattedNickname.length(), SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
-				holder.getTextView().setText(spannableString);
-			}
-			holder.getTextView().setVisibility(View.VISIBLE);
-		}
+		ChatUtils.processChatLine(holder.getTextView().getContext(), nickname, nickname, line.getMessage(), line.isOwn(), holder.getTextView(), holder.getAsyncImageView());
 	}
 
 	public static class ViewHolder extends RecyclerView.ViewHolder

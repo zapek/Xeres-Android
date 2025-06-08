@@ -20,6 +20,7 @@
 package io.xeres.mobile.ui.rooms;
 
 import android.annotation.SuppressLint;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ import java.util.Locale;
 import io.xeres.mobile.R;
 import io.xeres.mobile.service.json.ChatRoomBacklog;
 import io.xeres.mobile.service.json.ChatRoomMessage;
-import io.xeres.mobile.util.ChatUtils;
+import io.xeres.mobile.util.ChatProcessor;
 import io.xeres.mobile.view.AsyncImageView;
 
 class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHolder>
@@ -47,6 +48,7 @@ class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHolder>
 	private final long roomId;
 	private final List<ChatRoomBacklog> backlogs;
 	private final AsyncImageView.ImageInput imageInput;
+	private ChatProcessor chatProcessor;
 
 	private static final DateTimeFormatter TIME_DISPLAY = DateTimeFormatter.ofPattern("HH:mm")
 			.withLocale(Locale.ROOT)
@@ -65,6 +67,7 @@ class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHolder>
 	public ChatRoomAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
 	{
 		var view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_row_item, parent, false);
+		chatProcessor = new ChatProcessor(parent.getContext());
 		return new ChatRoomAdapter.ViewHolder(view);
 	}
 
@@ -94,7 +97,7 @@ class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHolder>
 	{
 		var nickname = line.getGxsId() == null ? ownName : line.getNickname();
 		var isOwn = line.getGxsId() == null;
-		ChatUtils.processChatLine(holder.getTextView().getContext(), isOwn ? nickname : line.getGxsId().toString(), nickname, line.getMessage(), isOwn, holder.getTextView(), holder.getAsyncImageView());
+		chatProcessor.processLine(isOwn ? nickname : line.getGxsId().toString(), nickname, line.getMessage(), isOwn, holder.getTextView(), holder.getAsyncImageView());
 	}
 
 	public static class ViewHolder extends RecyclerView.ViewHolder
@@ -107,6 +110,7 @@ class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHolder>
 		{
 			super(view);
 			textView = view.findViewById(R.id.textView);
+			textView.setMovementMethod(LinkMovementMethod.getInstance());
 			asyncImageView = view.findViewById(R.id.imageView);
 			timeView = view.findViewById(R.id.textTime);
 		}

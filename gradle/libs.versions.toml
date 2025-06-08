@@ -1,21 +1,22 @@
 [versions]
-agp = "8.9.2"
+agp = "8.10.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-appcompat = "1.7.0"
+appcompat = "1.7.1"
 material = "1.12.0"
 constraintlayout = "2.2.1"
-lifecycleLivedataKtx = "2.8.7"
-lifecycleViewmodelKtx = "2.8.7"
-navigationFragment = "2.8.9"
-navigationUi = "2.8.9"
+lifecycleLivedataKtx = "2.9.1"
+lifecycleViewmodelKtx = "2.9.1"
+navigationFragment = "2.9.0"
+navigationUi = "2.9.0"
 retrofit = "2.11.0"
 converterGson = "2.11.0"
 stompprotocolandroid = "17.11.0"
 activity = "1.10.1"
 preference = "1.2.1"
-jsoup = "1.19.1"
+jsoup = "1.20.1"
+markwon = "4.6.2"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -34,6 +35,10 @@ stompprotocolandroid = { module = "com.github.forresthopkinsa:stompprotocolandro
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
 jsoup = { group = "org.jsoup", name = "jsoup", version.ref = "jsoup" }
+markwon-core = { group = "io.noties.markwon", name = "core", version.ref = "markwon" }
+markwon-ext-strikethrough = { group = "io.noties.markwon", name = "ext-strikethrough", version.ref = "markwon" }
+markwon-editor = { group = "io.noties.markwon", name = "editor", version.ref = "markwon" }
+markwon-linkify = { group = "io.noties.markwon", name = "linkify", version.ref = "markwon" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

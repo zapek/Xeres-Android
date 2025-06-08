@@ -53,6 +53,9 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Objects;
 
+import io.noties.markwon.Markwon;
+import io.noties.markwon.editor.MarkwonEditor;
+import io.noties.markwon.editor.MarkwonEditorTextWatcher;
 import io.xeres.mobile.R;
 import io.xeres.mobile.service.ConnectionService;
 import io.xeres.mobile.service.LocalBinder;
@@ -121,6 +124,10 @@ public class ChatActivity extends AppCompatActivity
 			sendTypingNotificationIfNeeded();
 			return false;
 		});
+
+		Markwon markwon = Markwon.create(this);
+		MarkwonEditor editor = MarkwonEditor.create(markwon);
+		editText.addTextChangedListener(MarkwonEditorTextWatcher.withProcess(editor));
 		editText.addTextChangedListener(new TextWatcher()
 		{
 			@Override

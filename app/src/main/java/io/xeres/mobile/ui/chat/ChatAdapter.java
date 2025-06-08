@@ -20,6 +20,7 @@
 package io.xeres.mobile.ui.chat;
 
 import android.annotation.SuppressLint;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,17 +37,19 @@ import java.util.Locale;
 import io.xeres.mobile.R;
 import io.xeres.mobile.service.json.ChatBacklog;
 import io.xeres.mobile.service.json.ChatMessage;
-import io.xeres.mobile.util.ChatUtils;
+import io.xeres.mobile.util.ChatProcessor;
 import io.xeres.mobile.view.AsyncImageView;
 
 class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>
 {
 	private static final String TAG = "ChatAdapter";
 
+
 	private final String ownName;
 	private final String targetName;
 	private final List<ChatBacklog> backlogs;
 	private final AsyncImageView.ImageInput imageInput;
+	private ChatProcessor chatProcessor;
 
 	private static final DateTimeFormatter TIME_DISPLAY = DateTimeFormatter.ofPattern("HH:mm")
 			.withLocale(Locale.ROOT)
@@ -65,6 +68,7 @@ class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>
 	public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
 	{
 		var view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_row_item, parent, false);
+		chatProcessor = new ChatProcessor(parent.getContext());
 		return new ViewHolder(view);
 	}
 
@@ -93,7 +97,7 @@ class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>
 	private void processChatLine(ViewHolder holder, ChatBacklog line)
 	{
 		var nickname = line.isOwn() ? ownName : targetName;
-		ChatUtils.processChatLine(holder.getTextView().getContext(), nickname, nickname, line.getMessage(), line.isOwn(), holder.getTextView(), holder.getAsyncImageView());
+		chatProcessor.processLine(nickname, nickname, line.getMessage(), line.isOwn(), holder.getTextView(), holder.getAsyncImageView());
 	}
 
 	public static class ViewHolder extends RecyclerView.ViewHolder
@@ -106,6 +110,7 @@ class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>
 		{
 			super(view);
 			textView = view.findViewById(R.id.textView);
+			textView.setMovementMethod(LinkMovementMethod.getInstance());
 			asyncImageView = view.findViewById(R.id.imageView);
 			timeView = view.findViewById(R.id.textTime);
 		}

@@ -68,6 +68,10 @@ dependencies {
     implementation libs.activity
     implementation libs.preference
     implementation libs.jsoup
+	implementation libs.markwon.core
+	implementation libs.markwon.ext.strikethrough
+	implementation libs.markwon.editor
+	implementation libs.markwon.linkify
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core

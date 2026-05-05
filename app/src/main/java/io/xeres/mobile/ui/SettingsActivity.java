@@ -19,6 +19,7 @@
 
 package io.xeres.mobile.ui;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -70,9 +71,12 @@ public class SettingsActivity extends AppCompatActivity
 		{
 			setPreferencesFromResource(R.xml.root_preferences, rootKey);
 
+			disablePinnedSwitchIfNeeded();
+
 			EditTextPreference passwordPreference = findPreference("password");
 			if (passwordPreference != null)
 			{
+				passwordPreference.setOnBindEditTextListener(editText -> editText.setTypeface(Typeface.MONOSPACE));
 				passwordPreference.setSummaryProvider((Preference.SummaryProvider<EditTextPreference>) preference -> {
 					var text = preference.getText();
 
@@ -83,6 +87,15 @@ public class SettingsActivity extends AppCompatActivity
 					return "Set";
 				});
 			}
+		}
+
+		private void disablePinnedSwitchIfNeeded()
+		{
+			var pinnedPreference = findPreference("pinned");
+			assert pinnedPreference != null;
+			var prefs = getPreferenceManager().getSharedPreferences();
+			assert prefs != null;
+			pinnedPreference.setEnabled(!TextUtils.isEmpty(prefs.getString("public_key_format", "")));
 		}
 	}
 }

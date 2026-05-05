@@ -31,14 +31,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import io.xeres.mobile.databinding.ActivityMainBinding;
 import io.xeres.mobile.service.ConnectionService;
@@ -104,6 +104,11 @@ public class MainActivity extends AppCompatActivity
 					handleReceivedImage(intent);
 				}
 				// XXX: multiple image needs (ACTION_SEND_MULTIPLE)
+
+				// Make sure we don't handle it again (rotation, crash, etc...)
+				intent.setAction(null);
+				intent.setData(null);
+				intent.setType(null);
 			}
 		}
 	}

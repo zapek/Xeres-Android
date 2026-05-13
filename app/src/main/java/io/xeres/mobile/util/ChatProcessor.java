@@ -88,7 +88,7 @@ public class ChatProcessor
 		}
 		else if (message.startsWith("![](data:"))
 		{
-			data = message.substring(4);
+			data = message.substring(4, message.indexOf(" ")); // This is not very great...
 		}
 
 		if (data != null)

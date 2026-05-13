@@ -31,8 +31,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -61,11 +65,21 @@ public class MainActivity extends AppCompatActivity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		EdgeToEdge.enable(this);
 
 		binding = ActivityMainBinding.inflate(getLayoutInflater());
 		setContentView(binding.getRoot());
 
-		BottomNavigationView navView = findViewById(R.id.nav_view);
+		setSupportActionBar(binding.toolbar);
+
+		ViewCompat.setOnApplyWindowInsetsListener(binding.container, (v, insets) -> {
+			Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+			binding.appbar.setPadding(0, systemBars.top, 0, 0);
+			binding.navView.setPadding(0, 0, 0, systemBars.bottom);
+			return insets;
+		});
+
+		BottomNavigationView navView = binding.navView;
 		// Passing each menu ID as a set of Ids because each
 		// menu should be considered as top level destinations.
 		AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -73,7 +87,7 @@ public class MainActivity extends AppCompatActivity
 				.build();
 		NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
 		NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-		NavigationUI.setupWithNavController(binding.navView, navController);
+		NavigationUI.setupWithNavController(navView, navController);
 
 		var intent = getIntent();
 		handleIntent(intent);

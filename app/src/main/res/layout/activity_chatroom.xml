@@ -26,6 +26,18 @@
         android:orientation="vertical"
         tools:context=".ui.rooms.ChatRoomActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chat_recycler"
             android:layout_width="match_parent"
@@ -44,7 +56,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium">
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:id="@+id/input_layout">
 
         <EditText
                 android:id="@+id/chat_send"
@@ -64,8 +77,6 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_send"/>
 
-
     </LinearLayout>
-
 
 </LinearLayout>

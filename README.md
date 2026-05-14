@@ -5,16 +5,19 @@ This is the Android mobile client for [Xeres](https://github.com/zapek/Xeres).
 With it you can connect to your running Xeres instance at home or in a data center, easily
 and securely.
 
+## WARNING: Google is killing the Android we know! See https://keepandroidopen.org/ and protest
+
 ## Supported features
 
 - Contact list
 - Private messages
 - Chat rooms
 - Secured HTTPS link with certificate pinning
+- QR code scanning to add friends
 
 ## How to run
 
-- install a [Xeres](https://github.com/zapek/Xeres) instance 0.7.4 or higher
+- install a [Xeres](https://github.com/zapek/Xeres) instance 1.2.0 or higher
 - go to _Settings_ / _Remote_ and enable *Remote Access*
 - in the Android mobile client, to to _Settings_ and use the same parameters
 
@@ -47,3 +50,9 @@ They also require that application developers hand them the private keys to sign
 as they see fit, for one particular user or a particular group of users without anyone ever knowing). This is a
 serious drawback which means the primary method of distribution will be a plain APK with an auto update feature.
 I might still try to do a special version for the Play Store and other less brain dead stores will be considered, too.
+
+**Q: What will happen when Google fully closes the Android platform?** (see link above)
+
+**A:** I'm not sure. They're certainly going to use this as a way to shut down apps they don't seem fit. A peer-to-peer
+app able to provide privacy is going to be targeted at some point. For now, I'll still work (slowly) on the Android version but
+if things go out of control, priorities will shift into a web app.

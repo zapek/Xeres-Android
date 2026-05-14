@@ -403,6 +403,31 @@ public class ConnectionService extends Service implements AsyncImageView.ImageIn
 		}
 	}
 
+	public void getQrCode(long id, Consumer<ResponseBody> consumer)
+	{
+		xeresApiClient.getQrCode(id).enqueue(new Callback<>()
+		{
+			@Override
+			public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response)
+			{
+				if (response.isSuccessful())
+				{
+					consumer.accept(response.body());
+				}
+				else
+				{
+					Log.e(TAG, "Error HTTP: " + response.code());
+				}
+			}
+
+			@Override
+			public void onFailure(Call<ResponseBody> call, Throwable throwable)
+			{
+				showError(throwable);
+			}
+		});
+	}
+
 	private void showError(Throwable throwable)
 	{
 		Toast.makeText(this, "Network error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();

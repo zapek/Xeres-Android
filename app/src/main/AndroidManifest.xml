@@ -35,6 +35,14 @@
             android:theme="@style/Theme.Xeres.NoActionBar"
             tools:targetApi="31">
         <activity
+                android:name=".ui.qr.QrActivity"
+                android:exported="false"
+                android:label="QR Code">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".MainActivity" />
+        </activity>
+        <activity
                 android:name=".ui.AboutActivity"
                 android:exported="false"
                 android:label="@string/title_activity_about">

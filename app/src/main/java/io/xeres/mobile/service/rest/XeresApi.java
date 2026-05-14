@@ -60,4 +60,7 @@ public interface XeresApi
 
 	@GET("chat/rooms")
 	Call<ChatRoomContext> getChatRoomContext();
+
+	@GET("locations/{id}/rs-id/qr-code")
+	Call<ResponseBody> getQrCode(@Path("id") long id);
 }

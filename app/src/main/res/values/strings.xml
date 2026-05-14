@@ -48,4 +48,5 @@
     <string name="trust_full">Full</string>
     <string name="trust_ultimate">Ultimate</string>
 
+    <string name="scan_qr_instruction">Scan QR code</string>
 </resources>

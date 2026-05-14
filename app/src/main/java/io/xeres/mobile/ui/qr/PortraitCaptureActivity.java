@@ -20,7 +20,16 @@
 package io.xeres.mobile.ui.qr;
 
 import com.journeyapps.barcodescanner.CaptureActivity;
+import com.journeyapps.barcodescanner.CompoundBarcodeView;
+
+import io.xeres.mobile.R;
 
 public class PortraitCaptureActivity extends CaptureActivity
 {
+	@Override
+	protected CompoundBarcodeView initializeContent()
+	{
+		setContentView(R.layout.activity_portrait_capture);
+		return findViewById(R.id.zxing_barcode_scanner);
+	}
 }

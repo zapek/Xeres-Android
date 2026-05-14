@@ -222,7 +222,10 @@ public class ScanActivity extends AppCompatActivity
 
 	private String formatFingerprint(byte[] fingerprint)
 	{
-		if (fingerprint == null) return "";
+		if (fingerprint == null)
+		{
+			return "";
+		}
 		var hex = Id.toString(fingerprint).toUpperCase();
 		var sb = new StringBuilder();
 		for (int i = 0; i < hex.length(); i++)

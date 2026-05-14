@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 by David Gerber - https://zapek.com
+ * Copyright (c) 2026 by David Gerber - https://zapek.com
  *
  * This file is part of Xeres-Android.
  *
@@ -19,31 +19,17 @@
 
 package io.xeres.mobile.service.json;
 
-import androidx.annotation.NonNull;
-
-import io.xeres.mobile.Application;
-import io.xeres.mobile.R;
-
-public enum Trust
+public class RsIdRequest
 {
-	UNKNOWN(R.string.trust_unknown),
-	NEVER(R.string.trust_never),
-	MARGINAL(R.string.trust_marginal),
-	FULL(R.string.trust_full),
-	ULTIMATE(R.string.trust_ultimate);
+	private String rsId;
 
-	private final int resId;
-
-	Trust(int resId)
+	public String getRsId()
 	{
-		this.resId = resId;
+		return rsId;
 	}
 
-	@NonNull
-	@Override
-	public String toString()
+	public void setRsId(String rsId)
 	{
-		var instance = Application.getInstance();
-		return instance != null ? instance.getString(resId) : name();
+		this.rsId = rsId;
 	}
 }

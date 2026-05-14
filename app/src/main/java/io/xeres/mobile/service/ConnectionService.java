@@ -44,6 +44,8 @@ import io.xeres.mobile.service.json.ChatRoomContext;
 import io.xeres.mobile.service.json.Contact;
 import io.xeres.mobile.service.json.Location;
 import io.xeres.mobile.service.json.Profile;
+import io.xeres.mobile.service.json.RsIdRequest;
+import io.xeres.mobile.service.json.Trust;
 import io.xeres.mobile.service.rest.XeresApi;
 import io.xeres.mobile.util.JsonUtils;
 import io.xeres.mobile.view.AsyncImageView;
@@ -163,6 +165,7 @@ public class ConnectionService extends Service implements AsyncImageView.ImageIn
 				else
 				{
 					Log.e(TAG, "Error HTTP: " + response.code());
+					Toast.makeText(ConnectionService.this, "Error HTTP: " + response.code(), Toast.LENGTH_SHORT).show();
 				}
 			}
 
@@ -194,6 +197,7 @@ public class ConnectionService extends Service implements AsyncImageView.ImageIn
 				else
 				{
 					Log.e(TAG, "Error HTTP: " + response.code());
+					Toast.makeText(ConnectionService.this, "Error HTTP: " + response.code(), Toast.LENGTH_SHORT).show();
 				}
 			}
 
@@ -219,6 +223,7 @@ public class ConnectionService extends Service implements AsyncImageView.ImageIn
 				else
 				{
 					Log.e(TAG, "Error HTTP: " + response.code());
+					Toast.makeText(ConnectionService.this, "Error HTTP: " + response.code(), Toast.LENGTH_SHORT).show();
 				}
 			}
 
@@ -244,6 +249,7 @@ public class ConnectionService extends Service implements AsyncImageView.ImageIn
 				else
 				{
 					Log.e(TAG, "Error HTTP: " + response.code());
+					Toast.makeText(ConnectionService.this, "Error HTTP: " + response.code(), Toast.LENGTH_SHORT).show();
 				}
 			}
 
@@ -270,6 +276,7 @@ public class ConnectionService extends Service implements AsyncImageView.ImageIn
 				else
 				{
 					Log.e(TAG, "Error HTTP: " + response.code());
+					Toast.makeText(ConnectionService.this, "Error HTTP: " + response.code(), Toast.LENGTH_SHORT).show();
 				}
 			}
 
@@ -296,6 +303,7 @@ public class ConnectionService extends Service implements AsyncImageView.ImageIn
 				else
 				{
 					Log.e(TAG, "Error HTTP: " + response.code());
+					Toast.makeText(ConnectionService.this, "Error HTTP: " + response.code(), Toast.LENGTH_SHORT).show();
 				}
 			}
 
@@ -356,7 +364,7 @@ public class ConnectionService extends Service implements AsyncImageView.ImageIn
 		}
 
 		@Override
-		public void connect(String url) throws IOException
+		public void connect(String url)
 		{
 			this.url = url;
 		}
@@ -417,6 +425,59 @@ public class ConnectionService extends Service implements AsyncImageView.ImageIn
 				else
 				{
 					Log.e(TAG, "Error HTTP: " + response.code());
+					Toast.makeText(ConnectionService.this, "Error HTTP: " + response.code(), Toast.LENGTH_SHORT).show();
+				}
+			}
+
+			@Override
+			public void onFailure(Call<ResponseBody> call, Throwable throwable)
+			{
+				showError(throwable);
+			}
+		});
+	}
+
+	public void checkRsId(RsIdRequest rsIdRequest, Consumer<Profile> consumer)
+	{
+		xeresApiClient.checkRsId(rsIdRequest).enqueue(new Callback<>()
+		{
+			@Override
+			public void onResponse(Call<Profile> call, Response<Profile> response)
+			{
+				if (response.isSuccessful())
+				{
+					consumer.accept(response.body());
+				}
+				else
+				{
+					Log.e(TAG, "Error HTTP: " + response.code());
+					Toast.makeText(ConnectionService.this, "Error HTTP: " + response.code(), Toast.LENGTH_SHORT).show();
+				}
+			}
+
+			@Override
+			public void onFailure(Call<Profile> call, Throwable throwable)
+			{
+				showError(throwable);
+			}
+		});
+	}
+
+	public void createProfile(RsIdRequest rsIdRequest, Trust trust, Consumer<ResponseBody> consumer)
+	{
+		xeresApiClient.createProfile(rsIdRequest, trust.name()).enqueue(new Callback<>()
+		{
+			@Override
+			public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response)
+			{
+				if (response.isSuccessful())
+				{
+					consumer.accept(response.body());
+				}
+				else
+				{
+					Log.e(TAG, "Error HTTP: " + response.code());
+					Toast.makeText(ConnectionService.this, "Error HTTP: " + response.code(), Toast.LENGTH_SHORT).show();
 				}
 			}
 

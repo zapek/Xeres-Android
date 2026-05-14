@@ -32,6 +32,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import io.xeres.mobile.databinding.FragmentHomeBinding;
 import io.xeres.mobile.ui.qr.QrActivity;
+import io.xeres.mobile.ui.qr.ScanActivity;
 
 public class HomeFragment extends Fragment
 {
@@ -52,6 +53,11 @@ public class HomeFragment extends Fragment
 
 		binding.buttonQr.setOnClickListener(v -> {
 			var intent = new Intent(getContext(), QrActivity.class);
+			startActivity(intent);
+		});
+
+		binding.buttonScan.setOnClickListener(v -> {
+			var intent = new Intent(getContext(), ScanActivity.class);
 			startActivity(intent);
 		});
 

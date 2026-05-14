@@ -41,4 +41,11 @@
     <string name="web">Web</string>
     <string name="source_code">Source code</string>
 
+    <!-- Trust Levels -->
+    <string name="trust_unknown">Unknown</string>
+    <string name="trust_never">Never</string>
+    <string name="trust_marginal">Marginal</string>
+    <string name="trust_full">Full</string>
+    <string name="trust_ultimate">Ultimate</string>
+
 </resources>

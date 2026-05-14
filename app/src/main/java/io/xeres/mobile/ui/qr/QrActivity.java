@@ -68,7 +68,7 @@ public class QrActivity extends AppCompatActivity
 		if (actionBar != null)
 		{
 			actionBar.setDisplayHomeAsUpEnabled(true);
-			actionBar.setTitle("My QR Code");
+			actionBar.setTitle("My Xeres ID");
 		}
 	}
 

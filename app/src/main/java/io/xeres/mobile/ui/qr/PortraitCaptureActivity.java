@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 by David Gerber - https://zapek.com
+ * Copyright (c) 2026 by David Gerber - https://zapek.com
  *
  * This file is part of Xeres-Android.
  *
@@ -17,33 +17,10 @@
  * along with Xeres-Android.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.xeres.mobile.service.json;
+package io.xeres.mobile.ui.qr;
 
-import androidx.annotation.NonNull;
+import com.journeyapps.barcodescanner.CaptureActivity;
 
-import io.xeres.mobile.Application;
-import io.xeres.mobile.R;
-
-public enum Trust
+public class PortraitCaptureActivity extends CaptureActivity
 {
-	UNKNOWN(R.string.trust_unknown),
-	NEVER(R.string.trust_never),
-	MARGINAL(R.string.trust_marginal),
-	FULL(R.string.trust_full),
-	ULTIMATE(R.string.trust_ultimate);
-
-	private final int resId;
-
-	Trust(int resId)
-	{
-		this.resId = resId;
-	}
-
-	@NonNull
-	@Override
-	public String toString()
-	{
-		var instance = Application.getInstance();
-		return instance != null ? instance.getString(resId) : name();
-	}
 }

@@ -72,6 +72,7 @@ dependencies {
 	implementation libs.markwon.ext.strikethrough
 	implementation libs.markwon.editor
 	implementation libs.markwon.linkify
+    implementation libs.zxing.android.embedded
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core

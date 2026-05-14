@@ -33,13 +33,21 @@ public class Application extends android.app.Application implements AsyncImageVi
 {
 	private static final String TAG = "Application";
 
+	private static Application instance;
+
 	private ExecutorService imageLoaderExecutor;
 	private ImageCache imageCache;
+
+	public static Application getInstance()
+	{
+		return instance;
+	}
 
 	@Override
 	public void onCreate()
 	{
 		super.onCreate();
+		instance = this;
 
 		imageCache = new ImageCache(ImageCache.calculateSize(this));
 		imageLoaderExecutor = Executors.newFixedThreadPool(4);

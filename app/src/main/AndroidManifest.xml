@@ -43,6 +43,19 @@
                     android:value=".MainActivity" />
         </activity>
         <activity
+                android:name=".ui.qr.ScanActivity"
+                android:exported="false"
+                android:label="Scan QR Code">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".MainActivity" />
+        </activity>
+        <activity
+                android:name=".ui.qr.PortraitCaptureActivity"
+                android:stateNotNeeded="true"
+                android:theme="@style/zxing_CaptureTheme"
+                android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
                 android:name=".ui.AboutActivity"
                 android:exported="false"
                 android:label="@string/title_activity_about">

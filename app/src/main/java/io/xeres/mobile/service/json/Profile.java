@@ -27,6 +27,7 @@ public class Profile
 	private long id;
 	private String name;
 	private String pgpIdentifier;
+	private byte[] pgpFingerprint;
 	private Instant created;
 	private boolean accepted;
 	private Trust trust;
@@ -60,6 +61,16 @@ public class Profile
 	public void setPgpIdentifier(String pgpIdentifier)
 	{
 		this.pgpIdentifier = pgpIdentifier;
+	}
+
+	public byte[] getPgpFingerprint()
+	{
+		return pgpFingerprint;
+	}
+
+	public void setPgpFingerprint(byte[] pgpFingerprint)
+	{
+		this.pgpFingerprint = pgpFingerprint;
 	}
 
 	public Instant getCreated()

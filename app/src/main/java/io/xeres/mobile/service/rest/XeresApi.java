@@ -27,10 +27,14 @@ import io.xeres.mobile.service.json.ChatRoomContext;
 import io.xeres.mobile.service.json.Contact;
 import io.xeres.mobile.service.json.Location;
 import io.xeres.mobile.service.json.Profile;
+import io.xeres.mobile.service.json.RsIdRequest;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface XeresApi
 {
@@ -63,4 +67,10 @@ public interface XeresApi
 
 	@GET("locations/{id}/rs-id/qr-code")
 	Call<ResponseBody> getQrCode(@Path("id") long id);
+
+	@POST("profiles/check")
+	Call<Profile> checkRsId(@Body RsIdRequest rsIdRequest);
+
+	@POST("profiles")
+	Call<ResponseBody> createProfile(@Body RsIdRequest rsIdRequest, @Query("trust") String trust);
 }

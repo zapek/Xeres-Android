@@ -19,7 +19,7 @@ and securely.
 
 - install a [Xeres](https://github.com/zapek/Xeres) instance 1.2.0 or higher
 - go to _Settings_ / _Remote_ and enable *Remote Access*
-- in the Android mobile client, to to _Settings_ and use the same parameters
+- in the Android mobile client, go to _Settings_ and use the same parameters
 
 ## FAQ
 

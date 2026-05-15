@@ -106,8 +106,9 @@ public class ChatRoomActivity extends AppCompatActivity
 
 		ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
 			Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+			Insets ime = insets.getInsets(WindowInsetsCompat.Type.ime());
 			findViewById(R.id.appbar).setPadding(0, systemBars.top, 0, 0);
-			findViewById(R.id.input_layout).setPadding(0, 0, 0, systemBars.bottom);
+			findViewById(R.id.input_layout).setPadding(0, 0, 0, Math.max(systemBars.bottom, ime.bottom));
 			return insets;
 		});
 

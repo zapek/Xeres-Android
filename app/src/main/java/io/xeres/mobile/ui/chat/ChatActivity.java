@@ -183,6 +183,7 @@ public class ChatActivity extends AppCompatActivity
 				var imageString = Base64.encodeToString(output.toByteArray(), Base64.NO_WRAP);
 
 				messageToSend = "<img src=\"data:image/jpeg;base64," + imageString + "\"/>"; // XXX: we cannot use the send EditText because it has a limited size... we will have to delay the sending
+				intent.setData(null);
 			}
 			catch (FileNotFoundException e)
 			{
@@ -199,6 +200,7 @@ public class ChatActivity extends AppCompatActivity
 			if (text != null)
 			{
 				editText.setText(text);
+				intent.removeExtra(Intent.EXTRA_TEXT);
 			}
 		}
 

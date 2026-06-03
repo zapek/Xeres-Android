@@ -31,6 +31,8 @@
             android:layout_height="128dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
+            android:padding="16dp"
+            android:background="@drawable/logo_background"
             android:contentDescription="@string/app_name"
             android:src="@drawable/logo"
             app:layout_constraintBottom_toTopOf="@id/button_qr"

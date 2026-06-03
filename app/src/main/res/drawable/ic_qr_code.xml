@@ -1,0 +1,29 @@
+<!--
+  ~ Copyright (c) 2026 by David Gerber - https://zapek.com
+  ~
+  ~ This file is part of Xeres-Android.
+  ~
+  ~ Xeres-Android is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Xeres-Android is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Xeres-Android.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="?attr/colorOnPrimary">
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M3,11h8V3H3V11zM5,5h4v4H5V5zM3,21h8v-8H3V21zM5,15h4v4H5V15zM13,3v8h8V3H13V3zM19,9h-4V5h4V9zM15,13h-2v2h2V13zM13,15h-2v2h2V15zM15,17h-2v2h2V17zM17,15h2v2h-2V15zM19,13h-2v2h2V13zM21,15h-2v2h2V15zM17,17h2v2h-2V17zM19,17h2v2h-2V17zM13,19h-2v2h2V19zM15,19h-2v2h2V19zM17,19h-2v2h2V19zM21,11h2v2h-2V11zM21,3h2v2h-2V3z"/>
+</vector>
